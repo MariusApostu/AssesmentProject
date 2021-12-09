@@ -1,5 +1,6 @@
 package pages;
 
+import net.bytebuddy.utility.RandomString;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.SeleniumWrappers;
 
 import java.util.List;
+import java.util.Random;
 
 import static org.testng.Assert.assertTrue;
 
@@ -38,7 +40,7 @@ public class BlogsPage extends SeleniumWrappers {
     public boolean addComments (WebElement element) {
         element.click();
         commentField.click();
-        commentField.sendKeys("hhhhhhh");
+        sendKeys(commentField, RandomString.make());
         postCommentButton.click();
         return moderationCheckMessage.isDisplayed();
 
